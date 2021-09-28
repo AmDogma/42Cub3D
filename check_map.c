@@ -1,9 +1,9 @@
 #include "head_main.h"
 
-static void check_num(t_vars *vars, char *map)
+static void	check_num(t_vars *vars, char *map)
 {
-	int i;
-	int pers;
+	int	i;
+	int	pers;
 
 	i = 0;
 	pers = 0;
@@ -19,14 +19,15 @@ static void check_num(t_vars *vars, char *map)
 	}
 }
 
-void check_data(t_vars *vars, char *map)
+void	check_data(t_vars *vars, char *map)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (map && map[i])
 	{
-		if ((map[i] == 'N' || map[i] == 'W' || map[i] == 'S' || map[i] == 'E') && vars->angle != -1.0f)
+		if ((map[i] == 'N' || map[i] == 'W' || map[i] == 'S' \
+			|| map[i] == 'E') && vars->angle != -1.0f)
 			ft_errexit("Error: Only one N || S || W || E !\n");
 		if (map[i] == 'S')
 			vars->angle = M_PI / 2;
@@ -47,20 +48,24 @@ void check_data(t_vars *vars, char *map)
 
 static void	compare_around(t_vars *vars, int i, char *map)
 {
-	if (i % vars->xchars == 0 || i % vars->xchars == vars->xchars - 1 || i < vars->xchars || i / vars->xchars == vars->ylines - 1) // края карты
+	if (i % vars->xchars == 0 || i % vars->xchars == vars->xchars - 1 \
+		|| i < vars->xchars || i / vars->xchars == vars->ylines - 1)
 		ft_errexit("Error: Map data!\n");
-	if (map[i + 1] == ' ' || map[i - 1] == ' ' || map[i - vars->xchars] == ' ' || map[i + vars->xchars] == ' ' || map[i - vars->xchars - 1] == ' ' || map[i + vars->xchars + 1] == ' ' || map[i + vars->xchars - 1] == ' ' || map[i - vars->xchars + 1] == ' ')
+	if (map[i + 1] == ' ' || map[i - 1] == ' ' || map[i - vars->xchars] == ' ' \
+		|| map[i + vars->xchars] == ' ' || map[i - vars->xchars - 1] == ' ' \
+		|| map[i + vars->xchars + 1] == ' ' || map[i + vars->xchars - 1] \
+		== ' ' || map[i - vars->xchars + 1] == ' ')
 		ft_errexit("Error: Map data!\n");
 }
 
 void	valid_map(t_vars *vars, char *map)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (map && map[i])
 	{
-		if (map[i] == '0') //  || i == (vars->x_pos * vars->xchars) + vars->y_pos
+		if (map[i] == '0')
 			compare_around(vars, i, map);
 		i++;
 	}

@@ -2,8 +2,14 @@ NAME = cub3D
 
 SRC 		= main.c map_read.c utils.c utils_lst.c color_sides.c utils2.c check_map.c \
 				hook_utils.c \
+				hook_utils2.c \
 				window_init_utils.c \
-				line_place.c
+				line_place.c \
+				raycast.c \
+				rcast_utils.c \
+				rcast_utils_a.c \
+				rcast_utils_b.c \
+				rcast_utils_c.c
 
 NAME_LIBFT = libft.a
 
@@ -15,7 +21,7 @@ OBJ = $(SRC:.c=.o)
 
 CC = gcc
 
-CFLAGC = -g -Wall -Wextra -Werror -I.
+CFLAGC = -Wall -Wextra -Werror -I.
 
 RM = rm -f
 

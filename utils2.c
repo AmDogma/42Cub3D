@@ -1,8 +1,8 @@
 #include "head_main.h"
 
-void freestr(char **str)
+void	freestr(char **str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str && str[i])
@@ -16,7 +16,7 @@ void freestr(char **str)
 int	color_atoi(const char *str)
 {
 	int	res;
-	int i;
+	int	i;
 
 	res = 0;
 	i = 0;
@@ -34,7 +34,7 @@ int	color_atoi(const char *str)
 	return (res);
 }
 
-int make_color(int r, int g, int b)
+int	make_color(int r, int g, int b)
 {
 	return (r << 16 | g << 8 | b);
 }

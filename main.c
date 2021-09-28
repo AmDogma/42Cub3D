@@ -1,6 +1,6 @@
 #include "head_main.h"
 
-void define_vars(t_vars *vars)
+void	define_vars(t_vars *vars)
 {
 	vars->xmaus = 0;
 	vars->ymaus = 0;
@@ -20,24 +20,22 @@ void define_vars(t_vars *vars)
 	*vars->map = '\0';
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_vars	vars;
+	int		x;
+	int		y;
 
 	define_vars(&vars);
 	if (argc != 2)
 		ft_errexit("Error: arguments\n");
 	make_map(&vars, argv[1]);
 	window_init(&vars);
-	
-	int x;
-	int y;
 	x = 10;
 	y = 10;
-	vars.pers_ptr = mlx_xpm_file_to_image(vars.mlx, "./textures/pers.xpm", &x, &y);
-	vars.pers_mini_ptr = mlx_xpm_file_to_image(vars.mlx, "./textures/exit.xpm", &x, &y);
-
-	test(&vars);
+	vars.pers_mini_ptr = \
+		mlx_xpm_file_to_image(vars.mlx, "./textures/pers.xpm", &x, &y);
+	start_pos(&vars);
 	mlx_put_image_to_window(vars.mlx, vars.win, vars.img_ptr, 0, 0);
 	all_hooks_mlx(&vars);
 	mlx_loop(vars.mlx);
