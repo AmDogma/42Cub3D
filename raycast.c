@@ -6,7 +6,7 @@ void	ft_ray_floor_sky(int high, int ugol, t_vars *vars)
 	float	matrix;
 
 	nebo = 0;
-	while (nebo + high / 2 < 300)
+	while (nebo + high / 2 < 300 && nebo < 300)
 	{
 		matrix = 300 + ugol + (300 - high / 2 - nebo) * XSIZE;
 		vars->my_im_d[(int) matrix * 4] = vars->ceilling;
@@ -29,8 +29,8 @@ void	rcast_init(t_rcast *rcast, t_vars *vars)
 
 void	rcast_cos_sin_reload(t_rcast *rcast, t_vars *vars)
 {
-	rcast->c = cos(vars->angle + rcast->ugol * M_PI / 1800.0);
-	rcast->s = sin(vars->angle + rcast->ugol * M_PI / 1800.0);
+	rcast->c = cos(vars->angle + rcast->ugol * M_PI / 2400.0);
+	rcast->s = sin(vars->angle + rcast->ugol * M_PI / 2400.0);
 	rcast->i = 0;
 	rcast->i2 = 0;
 }
@@ -39,8 +39,6 @@ void	ft_put_sky_walls(t_rcast *rcast, t_vars *vars)
 {
 	if (rcast->h < 0)
 		rcast->h = 0;
-	else if (rcast->h > 599)
-		rcast->h = 599;
 	ft_ray_floor_sky(rcast->h, rcast->ugol, vars);
 	ft_line(vars, rcast);
 }

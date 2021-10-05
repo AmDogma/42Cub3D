@@ -9,8 +9,8 @@ float	m_p_1(t_vars *vars, t_rcast *rcast, double sinu, double cosi)
 		rcast->xpm = 64 * (vars->x_f - (1.0 - rcast->d_y + rcast->i) * \
 			cosi / sinu - (int)(vars->x_f - (1.0 - rcast->d_y + rcast->i) * \
 			cosi / sinu));
-		return (600 / (1.0 + ((1.0 - rcast->d_y + rcast->i) / sinu) * \
-			cos(abs(rcast->ugol) * M_PI / 1800.0)));
+		return (600.0 / (((1.0 - rcast->d_y + rcast->i) / sinu) * \
+			cos(abs(rcast->ugol) * M_PI / 2400.0)));
 	}
 	else
 		return (-1000001.0);
@@ -24,8 +24,8 @@ float	m_p_2(t_vars *vars, t_rcast *rcast, double sinu, double cosi)
 		rcast->flag = vars->east;
 		rcast->xpm = 64 * ((rcast->d_x + rcast->i2) * sinu / cosi + rcast->y \
 			- (int)((rcast->d_x + rcast->i2) * sinu / cosi + rcast->y));
-		return (600 / (1.0 + (rcast->d_x + rcast->i2) / cosi * \
-			cos(abs(rcast->ugol) * M_PI / 1800.0)));
+		return (600.0 / ((rcast->d_x + rcast->i2) / cosi * \
+			cos(abs(rcast->ugol) * M_PI / 2400.0)));
 	}
 	else
 		return (-1000001.0);
@@ -60,8 +60,8 @@ void	minimap_add(t_vars *vars, int a, int b, int matr)
 	int		ax;
 	int		by;
 
-	ax = (XSIZE / 6 ) / vars->xchars;
-	by = (YSIZE / 6 ) / vars->ylines;
+	ax = (XSIZE / 6.0 ) / vars->xchars;
+	by = (YSIZE / 6.0) / vars->ylines;
 	while (++a < 99)
 	{
 		b = -1;

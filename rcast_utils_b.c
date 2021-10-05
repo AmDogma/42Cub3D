@@ -9,8 +9,8 @@ float	p_p_1(t_vars *vars, t_rcast *rcast, double sinu, double cosi)
 		rcast->xpm = 64 * (vars->x_f + (1.0 - rcast->d_y + rcast->i) * \
 			cosi / sinu - (int)(vars->x_f + \
 			(1 - rcast->d_y + rcast->i) * cosi / sinu));
-		return (600 / (1.0 + (1.0 - rcast->d_y + rcast->i) / sinu * \
-			cos(abs(rcast->ugol) * M_PI / 1800.0)));
+		return (600.0 / ((1.0 - rcast->d_y + rcast->i) / sinu * \
+			cos(abs(rcast->ugol) * M_PI / 2400.0)));
 	}
 	else
 		return (-1000001.0);
@@ -25,8 +25,8 @@ float	p_p_2(t_vars *vars, t_rcast *rcast, double sinu, double cosi)
 		rcast->xpm = 64 * ((1.0 - rcast->d_x + rcast->i2) * sinu / cosi + \
 			rcast->y - (int)((1.0 - rcast->d_x + rcast->i2) \
 			* sinu / cosi + rcast->y));
-		return (600 / (1.0 + (1.0 - rcast->d_x + rcast->i2) / cosi \
-			* cos(abs(rcast->ugol) * M_PI / 1800.0)));
+		return (600.0 / ((1.0 - rcast->d_x + rcast->i2) / cosi \
+			* cos(abs(rcast->ugol) * M_PI / 2400.0)));
 	}
 	else
 		return (-1000001.0);

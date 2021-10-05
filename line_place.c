@@ -12,8 +12,13 @@ void	ft_line(t_vars *vars, t_rcast *rcast)
 	coef = (float)rcast->h / 64.0;
 	base = 300 - rcast->h / 2;
 	y = base;
-	while (y < base + rcast->h)
+	while (y < base + rcast->h && y < 600 )
 	{
+		if (y < -299)
+		{
+			y++;
+			continue ;
+		}
 		res_im = (y * 600 + rcast->x_img) * 4;
 		res_xpm = ((int)(((float)(y - base)) / coef) *64 + (int)rcast->xpm) * 4;
 		vars->my_im_d[res_im] = rcast->flag[res_xpm];
